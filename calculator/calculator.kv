@@ -1,0 +1,405 @@
+
+<MainCalculatorWindow>:
+    orientation: 'vertical'
+    MDBoxLayout:
+        size_hint_y: .2
+        padding: [25, 10, 10, 25]
+        md_bg_color: 56/255, 40/255, 81/255, 1
+        MDBoxLayout:
+            orientation: 'vertical'
+            MDLabel:
+                text: "Basket Calculator"
+                font_style: "H5"
+            MDBoxLayout:
+                adaptive_size: True
+                spacing: dp(15)
+                MDIcon:
+                    id: page_icon
+                    icon: "calculator"
+                MDLabel:
+                    text: "Calculator"
+                    text_size: None, None
+                    adaptive_width: True
+                MDIcon:
+                    icon: "chevron-down"
+    MDGridLayout:
+        id: content
+        size_hint_y: .8
+        cols: 1
+        rows: 1
+        padding: [5, 10, 5, 10]
+        spacing: "10dp"
+        ScreenManager:
+            id: screen_manager
+            spacing: "10dp"
+            Screen:
+                id: scores_screen
+                name: "scores_screen"
+            Screen:
+                id: alternatives_screen
+                name: "alternatives_screen"
+            Screen:
+                id: results_screen
+                name: "results_screen"
+# ----------------------------------------------------------------------
+<CalculatorWidget>:
+    id: main_win
+    orientation: 'vertical'
+    spacing: "10dp"
+    MDCard:
+        elevation: 10
+        size_hint_y: .9
+        radius: [15]
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: "5dp"
+            MDBoxLayout:
+                orientation: 'vertical'
+                radius: [15, 15, 15, 15]
+                padding: "10dp"
+                spacing: "5dp"
+                MDLabel:
+                    text: "Past Head To Head Scores"
+                    halign: "center"
+                    font_style: "H6"
+                    size_hint_y: .1
+                    underline: True
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: .9
+                    MDBoxLayout:
+                        spacing: dp(10)
+                        padding: dp(10)
+                        size_hint_y: .1
+                        pos_hint: {'center_x': .5,'center_y': .5}
+                        padding: [20, 20, 20, 0]
+                        FunkyLabel:
+                            text: "MT 1:"
+                        FunkyTextInput:
+                            id: home_mt1
+                            helper_text: "Enter scores"
+                            focus: True
+                            on_text_validate:
+                                root.is_valid()
+                                root.next_button()
+                        FunkyTextInput:
+                            id: away_mt1
+                            helper_text: "Enter scores"
+                            on_text_validate:
+                                root.is_valid()
+                                root.next_button()
+                    MDBoxLayout:
+                        spacing: dp(10)
+                        size_hint_y: .1
+                        pos_hint: {'center_x': .5,'center_y': .5}
+                        padding: [20, 20, 20, 0]
+                        FunkyLabel:
+                            text: "MT 2:"
+                        FunkyTextInput:
+                            id: home_mt2
+                            helper_text: "Enter scores"
+                            on_text_validate:
+                                root.is_valid()
+                                root.next_button()
+                        FunkyTextInput:
+                            id: away_mt2
+                            helper_text: "Enter scores"
+                            on_text_validate:
+                                root.is_valid()
+                                root.next_button()
+                    MDBoxLayout:
+                        spacing: dp(10)
+                        size_hint_y: .1
+                        pos_hint: {'center_x': .5,'center_y': .5}
+                        padding: [20, 20, 20, 0]
+                        FunkyLabel:
+                            text: "MT 3:"
+                        FunkyTextInput:
+                            id: home_mt3
+                            helper_text: "Enter scores"
+                            on_text_validate:
+                                root.is_valid()
+                                root.next_button()
+                        FunkyTextInput:
+                            id: away_mt3
+                            helper_text: "Enter scores"
+                            on_text_validate:
+                                root.is_valid()
+                                root.next_button()
+                    MDBoxLayout:
+                        spacing: dp(10)
+                        size_hint_y: .1
+                        pos_hint: {'center_x': .5,'center_y': .5}
+                        padding: [20, 20, 20, 0]
+                        FunkyLabel:
+                            text: "MT 4:"
+                        FunkyTextInput:
+                            id: home_mt4
+                            helper_text: "Enter scores"
+                            on_text_validate:
+                                root.is_valid()
+                                root.next_button()
+                        FunkyTextInput:
+                            id: away_mt4
+                            helper_text: "Enter scores"
+                            on_text_validate:
+                                root.is_valid()
+                                root.next_button()
+                    MDBoxLayout:
+                        spacing: dp(10)
+                        size_hint_y: .1
+                        pos_hint: {'center_x': .5,'center_y': .5}
+                        padding: [20, 20, 20, 0]
+                        FunkyLabel:
+                            text: "MT 5:"
+                        FunkyTextInput:
+                            id: home_mt5
+                            helper_text: "Enter scores"
+                            on_text_validate:
+                                root.is_valid()
+                                root.next_button()
+                        FunkyTextInput:
+                            id: away_mt5
+                            helper_text: "Enter scores"
+                            on_text_validate:
+                                root.is_valid()
+                                root.next_button()
+    MDCard:
+        pos_hint: {'center_x': .5,'center_y': .5}
+        size_hint_y: .1
+        radius: [15, 15, 15, 15]
+        MDBoxLayout:
+            FunkyButton:
+                id: next_btn
+                text: "Next"
+                on_release: root.next_button()     
+# ----------------------------------------------------------------------
+<AlternativesWidget>:
+    id: alternatives_win
+    orientation: 'vertical'
+    spacing: "10dp"
+    MDBoxLayout:
+        size_hint_y: .9
+        spacing: "10dp"
+        MDCard:
+            orientation: 'vertical'
+            pos_hint: {'center_x': .5,'center_y': .5}
+            radius: [15]
+            padding: "5dp"
+            spacing: "10dp"
+            MDBoxLayout:
+                orientation: 'vertical'
+                spacing: "5dp"
+                padding: "10dp"
+                MDBoxLayout:    # Alternatives
+                    orientation: 'vertical'
+                    size_hint_y: .45
+                    MDLabel:
+                        text: "Alternatives"
+                        halign: "center"
+                        font_style: "H6"
+                        size_hint_y: .24
+                        underline: True
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: .76
+                        spacing: "5dp"
+                        padding: "10dp"
+                        MDBoxLayout:
+                            orientation: 'horizontal'
+                            spacing: "5dp"
+                            FunkyLabel:
+                                text: "Min Alternative:"
+                                size_hint_x: .6
+                            FunkyTextInput:
+                                id: min_alternative
+                                size_hint_x: .4
+                                helper_text: "Min alt by bookies"
+                                on_text_validate:
+                                    root.is_valid_alternative()
+                                    root.calculate()
+                        MDBoxLayout:
+                            orientation: 'horizontal'
+                            spacing: "5dp"
+                            FunkyLabel:
+                                text: "Max Alternative:"
+                                size_hint_x: .6
+                            FunkyTextInput:
+                                id: max_alternative
+                                size_hint_x: .4
+                                helper_text: "Max alt by bookies"
+                                on_text_validate:
+                                    root.is_valid_alternative()
+                                    root.calculate()
+                MDBoxLayout:    # Odds
+                    orientation: 'vertical'
+                    size_hint_y: .55
+                    MDLabel:
+                        text: "Odds"
+                        halign: "center"
+                        font_style: "H6"
+                        size_hint_y: .2
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: .8
+                        MDBoxLayout:    # HH
+                            orientation: 'horizontal'
+                            spacing: "10dp"
+                            padding: "10dp"
+                            MDBoxLayout:
+                                orientation: 'horizontal'
+                                FunkyLabel:
+                                    text: "HH1:    "
+                                    size_hint_x: .6
+                                FunkyTextInput:
+                                    id: hh1_odds
+                                    size_hint_x: .4
+                                    helper_text: "Home team"
+                                    on_text_validate:
+                                        root.is_valid_odds()
+                                        root.calculate()
+                            MDBoxLayout:
+                                orientation: 'horizontal'
+                                FunkyLabel:
+                                    text: "HH2:    "
+                                    size_hint_x: .6
+                                FunkyTextInput:
+                                    id: hh2_odds
+                                    size_hint_x: .4
+                                    helper_text: "Away team"
+                                    on_text_validate:
+                                        root.is_valid_odds()
+                                        root.calculate()
+                        MDBoxLayout:    # Min Alt
+                            orientation: 'horizontal'
+                            MDBoxLayout:
+                                orientation: 'horizontal'
+                                FunkyLabel:
+                                    text: "Min Alt:"
+                                    size_hint_x: .6
+                                FunkyTextInput:
+                                    id: min_alt_over
+                                    size_hint_x: .4
+                                    helper_text: "Over odds"
+                                    on_text_validate:
+                                        root.is_valid_odds()
+                                        root.calculate()
+                            MDBoxLayout:
+                                orientation: 'horizontal'
+                                FunkyLabel:
+                                    text: "Min Alt:"
+                                    size_hint_x: .6
+                                FunkyTextInput:
+                                    id: min_alt_under
+                                    size_hint_x: .4
+                                    helper_text: "Under odds"
+                                    on_text_validate:
+                                        root.is_valid_odds()
+                                        root.calculate()
+                        MDBoxLayout:    # Max Alt
+                            orientation: 'horizontal'
+                            MDBoxLayout:
+                                orientation: 'horizontal'
+                                FunkyLabel:
+                                    text: "Max Alt:"
+                                    size_hint_x: .6
+                                FunkyTextInput:
+                                    id: max_alt_over
+                                    size_hint_x: .4
+                                    helper_text: "Over odds"
+                                    on_text_validate:
+                                        root.is_valid_odds()
+                                        root.calculate()
+                            MDBoxLayout:
+                                orientation: 'horizontal'
+                                FunkyLabel:
+                                    text: "Max Alt:"
+                                    size_hint_x: .6
+                                FunkyTextInput:
+                                    id: max_alt_under
+                                    size_hint_x: .4
+                                    helper_text: "Under odds"
+                                    on_text_validate:
+                                        root.is_valid_odds()
+                                        root.calculate()
+    MDBoxLayout:
+        size_hint_y: .1
+        MDCard:
+            pos_hint: {'center_x': .5,'center_y': .5}
+            radius: [15, 15, 15, 15]
+            MDBoxLayout:
+                spacing: "2dp"
+                pos_hint: {'center_x': .5,'center_y': .5}
+                halign: "center"
+                FunkyButton:
+                    text: "Back"
+                    on_release: root.back_button()
+                FunkyButton:
+                    text: "Calculate"
+                    on_release: root.calculate()
+# ----------------------------------------------------------------------
+<ResultsWidget>:
+    id: results_win
+    orientation: 'vertical'
+    spacing: "10dp"
+    MDCard:
+        elevation: 10
+        size_hint_y: .9
+        radius: [15]
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: "5dp"
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: "10dp"
+                spacing: "5dp"
+                MDLabel:
+                    text: "Prediction"
+                    halign: "center"
+                    font_style: "H6"
+                    size_hint_y: .1
+                    underline: True
+                MDBoxLayout:
+                    id: results_content_win
+                    orientation: 'vertical'
+                    size_hint_y: .9
+
+    MDCard:
+        pos_hint: {'center_x': .5,'center_y': .5}
+        size_hint_y: .1
+        radius: [15, 15, 15, 15]
+        MDBoxLayout:
+            FunkyButton:
+                id: next_btn
+                text: "Home"
+                on_release: root.home()     
+# ------------------------------------------------------------------------------------------
+<FunkyButton@Button>:
+    font_size: "16sp"
+    background_color: 0, 0, 0, 0
+    canvas.before:
+        Color:
+            rgb: rgba(52, 0, 231, 255)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [5]
+
+<FunkyTextInput@MDTextField>:
+    hint_text: ""
+    helper_text: "Enter odds"
+    helper_text_mode: "on_focus"
+    input_filter: "float"
+    required: True
+    write_tab: False
+    font_size: "18sp"
+    hint_text_size: "10sp"
+    size_hint: .45, 1
+    halign: "center"
+
+<FunkyLabel@MDLabel>:
+    text: ""
+    size_hint_x: .3
+    halign: "center"
+    font_size: "16sp"
+    # bold: True
